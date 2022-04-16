@@ -1,0 +1,4 @@
+Funções do diretório:
+
+- Concentra toda a lógica responável pelas tratativas.
+- Requisitos não funcionais.

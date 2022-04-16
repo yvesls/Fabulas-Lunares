@@ -1,0 +1,5 @@
+Funções:
+
+- Arquivos estes que permitem o carregamento automático das classes do projeto que são redigidas pela especificação psr4 
+por meio do composer.
+- Carrega os diretórios antes de qualquer tratativa.

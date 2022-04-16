@@ -1,0 +1,22 @@
+Front: 4° passo
+
+Funções:
+
+- É a parte lógica e linear de interpretação de uma requisição.
+- Ela recebe a superglobal que trata da requisição feita e encaminha para a tratativa em routes, no diretório App.
+- Depois de verificar se routes possui aquela requisição, ele encaminha para controller no qual será tratado de acordo.
+
+Recebe de: App/public/index.php
+
+- Requisição.
+- Ex: "contatos" de www.teste.com.br/contatos.
+
+Comunica para tratativa com: App/route.php
+
+- Route.
+
+Envia: App/Controllers/IndexController.php
+
+- Requisição.
+
+OBS; init significa iniciação.

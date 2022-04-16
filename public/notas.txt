@@ -1,0 +1,14 @@
+Front: 1° passo
+Funções:
+
+- Recebe uma requisição e carrega o autoload do composer (que possui todas as classes).
+- E pela especificação psr4 fará o carregamento de todas as classes (próxima parada route).
+
+O que recebe:
+
+- Require do script autoload contido dentro do diretório vendor 
+- Script esse que é responsável por fazer todo o carregamento automático de todas as classes
+
+O que cria/posibilita/encaminha: 
+
+- Cria um novo bjeto com base na classe route.

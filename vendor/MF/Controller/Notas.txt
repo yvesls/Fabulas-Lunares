@@ -1,0 +1,22 @@
+Front: 
+
+Funções:
+
+- Diretório de requisição não funcional que é responsável por fazer o require do layout e páginas da aplicação.
+- Lógica de renderização de views.
+- Extenção de Controllers.
+
+Trata: 
+
+- O fluxo de requisições, seja de bd ou de páginas.
+
+Recebe: 
+
+- A requisição do layout e da página view passadas para controller.
+
+Envia: 
+
+- A página e layout (se existirem) requisitados para index. As páginas são inseridas no layout (que é carregado primeiro).
+
+
+OBS: Até aqui toda a parte de front and é realizada e este é o último processo de requisição.

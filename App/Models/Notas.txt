@@ -1,0 +1,9 @@
+Funções:
+
+- Modelos da aplicação
+- Responsável por selecionar o que será resgatado do banco de dados
+- Cada arquivo é uma tabela no bd
+
+Recebe: 
+
+- A instância de bd, da connection
