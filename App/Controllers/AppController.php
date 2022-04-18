@@ -63,7 +63,7 @@ class AppController extends Action {
 		header('Location: /adm_midia');
 	}
 
-	public function recupera_midia(){
+	public function recupera_midia() {
 
 		$this->validaAutenticacao();
 	
@@ -75,6 +75,22 @@ class AppController extends Action {
 		foreach($this->view->midias as $key=>$dados) {
 			echo $dados['descricao'].'@@@y@@@'.$dados['imagem'].'@@@y@@@'.$dados['tamanho'].'@@@fim@@@';
 		}
+	}
+
+	public function exclui_imagem() {
+		$this->validaAutenticacao();
+
+		$conexaoPosts = Container::getModel('Posts');
+		
+		
+		$conexaoPosts->__set('src', $_POST['src']);
+		$conexaoPosts->exclui_imagem_midia();
+		
+		$arquivo = "imagens/".$_POST['src'];
+		$resultado = unlink($arquivo);
+		var_dump( $resultado );
+
+		$this->view->nome = 'Mídia';
 	}
 }
 ?>

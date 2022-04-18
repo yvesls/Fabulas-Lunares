@@ -143,7 +143,7 @@ li {
 /* adm - midia */
 
 .form-midia {
-    margin-left: -400px;
+    display: none;
     padding: 20px;
 }
 
@@ -158,15 +158,6 @@ li {
     cursor: pointer;
     background-color: #d8d8d8;
     border: 1px solid #d8d8d8;
-}
-
-.img-midia-tam {
-    display: none;
-    overflow: auto;
-    resize: both;
-    width: 300px;
-    height: auto;
-    cursor: pointer;
 }
 
 .galeria-midia {
@@ -203,6 +194,24 @@ li {
     padding: 5px;
 }
 
+.excluir-midia {
+    position: absolute;
+    right: 15px;
+    top: 13px;
+    text-align: center;
+    padding-top: 3px;
+    width: 35px;
+    color: #333333;
+    border: 1px solid #33333300;
+    z-index: 2;
+}
+
+.excluir-midia:hover {
+    color: #58b2db;
+    background-color: #00001b;
+    border-radius: 50%;
+}
+
 /* carrossel */
 
 button, button:active {
@@ -234,6 +243,7 @@ button, button:active {
 .item img {
     width: 155px;
     margin: 0;
+    height: 35vh;
     border-radius: 5px;
     cursor: pointer;
     z-index: 1;

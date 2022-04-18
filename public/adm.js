@@ -62,8 +62,68 @@ $(document).ready(() => {
 
     // midia
 
+    function ajax(){
+        var req = new XMLHttpRequest();
+        req.onreadystatechange = function(){
+            // verifica se a conexão com o bd deu certo (parte comunicação)
+            if (req.readyState == 4 && req.status == 200) {
+                
+                let array1 = req.responseText.split('@@@fim@@@');
+
+                var dividindoMsg = [];
+                for(let i = 0; i < array1.length; i++){
+                    dividindoMsg = new Array;
+                }
+
+                for(let i = 0; i < array1.length; i++){
+                    
+                    for(let j = 0; j < 3 ; j++){
+                        dividindoMsg[i] = array1[i].split('@@@y@@@');
+                    }
+                }
+
+                dividindoMsg.forEach(div => {
+                    console.log(div);
+                });
+                
+                for(let i = 0; i < dividindoMsg.length; i++){
+                    if(dividindoMsg[i].length == 1 ){
+                        continue;
+                    }
+                    let div = document.createElement('div');
+                    let excluir = document.createElement('span');
+                    excluir.className = 'excluir-midia';
+                    excluir.addEventListener("click", excluiImagem);
+                    let descricao = document.createElement('small');
+                    div.style.textAlign = "center";
+                    descricao.style.fontStyle = "italic";
+                    div.style.display = "flex";
+                    div.style.flexDirection = "column";
+                    div.style.padding = '10px 10px';
+                    div.style.position = 'relative';
+
+                    let img = document.createElement('img');
+                    img.src = "imagens/"+dividindoMsg[i][1]; // tamanhos: 155px, 250px, 350px, 450px, 650px
+                    img.style.width = dividindoMsg[i][2] +'px';
+                    
+                    $(descricao).html(dividindoMsg[i][0]);
+                    $(excluir).html('<i class="fas fa-times fa-2x"></i>');
+                    $(div).prepend(descricao);
+                    $(div).prepend(img);
+                    $(div).prepend(excluir);
+                    
+                    
+                    $('.galeria-container').prepend(div);
+                }
+            }
+        }
+
+        // recuperando dados da comunicação -- chat --
+        req.open('POST', '/recupera_midia', true);
+        req.send();
+    }
+
     $('.add-midia').on('click', function(){
-        $('.form-midia').css('margin-left', '0px');
         $('.form-midia').css('display', 'block');
         $('.add-midia').css('display', 'none');
     });
@@ -71,58 +131,32 @@ $(document).ready(() => {
     $('.galeria-midia').on('click', function(){
         $('.galeria-midia').css('display', 'none');
         ajax();
-        function ajax(){
-            var req = new XMLHttpRequest();
-            req.onreadystatechange = function(){
-                // verifica se a conexão com o bd deu certo (parte comunicação)
-                if (req.readyState == 4 && req.status == 200) {
-                    
-                    let array1 = req.responseText.split('@@@fim@@@');
-
-                    var dividindoMsg = [];
-                    for(let i = 0; i < array1.length; i++){
-                        dividindoMsg = new Array;
-                    }
-
-                    for(let i = 0; i < array1.length; i++){
-                        
-                        for(let j = 0; j < 3 ; j++){
-                            dividindoMsg[i] = array1[i].split('@@@y@@@');
-                        }
-                    }
-
-                    dividindoMsg.forEach(div => {
-                        console.log(div);
-                    });
-                    
-                    for(let i = 0; i < dividindoMsg.length; i++){
-                        if(dividindoMsg[i].length == 1 ){
-                            continue;
-                        }
-                        let div = document.createElement('div');
-                        let descricao = document.createElement('small');
-                        div.style.textAlign = "center";
-                        descricao.style.fontStyle = "italic";
-                        div.style.display = "flex";
-                        div.style.flexDirection = "column";
-                        div.style.padding = '10px 10px';
-
-                        let img = document.createElement('img');
-                        img.src = "imagens/"+dividindoMsg[i][1]; // tamanhos: 155px, 250px, 350px, 450px, 650px
-                        img.style.width = dividindoMsg[i][2] +'px';
-                        
-                        $(descricao).html(dividindoMsg[i][0]);
-                        $(div).prepend(descricao);
-                        $(div).prepend(img);
-                        
-                        
-                        $('.galeria-container').prepend(div);
-                    }
-                }
-            }
-            // recuperando dados da comunicação -- chat --
-            req.open('POST', '/recupera_midia', true);
-            req.send();
-        }
+        
     });
+
+    function excluiImagem(){
+        let img = $(this).next().attr('src');
+        img = img.split('/');
+        img = img[1];
+        //console.log(img); // retorna o nome do arquivo salvo no banco de dados
+        
+        $.ajax({ // realiza uma requisição para o servidor
+            // busca no servidor por via POST
+            type: 'POST', 
+            // url da página que interage com o servidor
+            url: '/exclui_imagem',
+            // envia os dados que serão parametros para busca no servidor (neste caso a data)
+            data: 'src=' + img, // x-ww-form-urlencoded - sintaxe usada, formato urlencoded passa quantos valores quanto necessário (&parametro=valor)
+            dataType: 'text',// modifica o tipo de retorno (padrao html)
+            success: dados => {
+                location.reload();
+            }, // mostra os dados de erro do back
+            error: function ( status, error)  {
+                alert('Deu erro na recuperação dos dados');
+                console.log(arguments);
+                console.log(status);
+                console.log(error.message);
+            }
+        }); 
+    }
 });

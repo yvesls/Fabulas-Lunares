@@ -89,6 +89,12 @@
                 'action' => 'recupera_midia'
             );
 
+            $routes['exclui_imagem']= array (
+                'route' => '/exclui_imagem', 
+                'controller' => 'AppController',
+                'action' => 'exclui_imagem'
+            );
+
             $routes['sair']= array (
                 'route' => '/sair', 
                 'controller' => 'AuthController',

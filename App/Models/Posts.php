@@ -6,6 +6,7 @@
     class Posts extends Model {
         private $descricao;
         private $arquivo;
+        private $src;
 
         public function __get($atributo) {
             return $this->$atributo;
@@ -36,6 +37,17 @@
             $query = "select descricao, imagem, tamanho from tb_imagens";
     
             return $this->db->query($query)->fetchAll(\PDO::FETCH_ASSOC);
+        }
+
+        public function exclui_imagem_midia() {
+            
+            $query = "delete from tb_imagens where tb_imagens.imagem = :arquivo"; //  preenchendo nome email e senha
+            $stmt = $this->db->prepare($query); // instanciando o pbo
+            $stmt->bindValue(':arquivo', $this->__get('src')); 
+    
+            $stmt->execute(); // executa o pdo stmt
+    
+            return $this;
         }
     }
 
