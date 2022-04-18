@@ -77,6 +77,18 @@
                 'action' => 'adm_comentarios'
             );
 
+            $routes['adm_set_midia']= array (
+                'route' => '/adm_set_midia', 
+                'controller' => 'AppController',
+                'action' => 'adm_set_midia'
+            );
+
+            $routes['recupera_midia']= array (
+                'route' => '/recupera_midia', 
+                'controller' => 'AppController',
+                'action' => 'recupera_midia'
+            );
+
             $routes['sair']= array (
                 'route' => '/sair', 
                 'controller' => 'AuthController',

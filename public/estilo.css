@@ -72,7 +72,7 @@ li {
 }
 
 .menu-lateral-adm {
-    width: 20vw;
+    width: 15vw;
     height: 100%;
     position: fixed;
     left: 0;
@@ -80,9 +80,14 @@ li {
     background-color: #00001b;
 }
 
+.menu-aberto {
+    width: 5vw;
+    margin-right: 10vw;
+}
+
 .prev-menu-adm, .next-menu-adm{
     position: fixed;
-    left: 19.8vw;
+    left: 14.8vw;
     bottom: 2vh;
     background-color: #00001b;
     color: white;
@@ -135,6 +140,69 @@ li {
     background-color: #58b2db;
 }
 
+/* adm - midia */
+
+.form-midia {
+    margin-left: -400px;
+    padding: 20px;
+}
+
+.add-midia {
+    width: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 2px solid #d8d8d8;
+}
+
+.add-midia:hover {
+    cursor: pointer;
+    background-color: #d8d8d8;
+    border: 1px solid #d8d8d8;
+}
+
+.img-midia-tam {
+    display: none;
+    overflow: auto;
+    resize: both;
+    width: 300px;
+    height: auto;
+    cursor: pointer;
+}
+
+.galeria-midia {
+    width: 100px;
+}
+
+.btn-info.btn-info {
+    background-color: #64cafa;
+    color: #00001b;
+}
+
+.btn-info.btn-info:hover {
+    background-color: #58b2db;
+    border-color: #58b2db;
+}
+
+.btn-info.btn-info:focus {
+    box-shadow: none;
+}
+
+.galeria-container {
+    background-color: #ececec;
+    border: 1px solid #d8d8d8;
+    border-radius: 5px;
+}
+
+.select-midia.select-midia {
+    margin: 10px 7px;
+    width: 120px;
+}
+
+.descricao-midia.descricao-midia {
+    width: 300px;
+    padding: 5px;
+}
+
 /* carrossel */
 
 button, button:active {
@@ -166,7 +234,6 @@ button, button:active {
 .item img {
     width: 155px;
     margin: 0;
-    height: 35vh;
     border-radius: 5px;
     cursor: pointer;
     z-index: 1;

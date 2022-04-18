@@ -1,37 +1,40 @@
-<div class="container-fluid p-4">
-	<h1 class="titulo-secao"><?=$this->view->nome?></h1>
-	<section class="col-12 d-flex justify-content-around align-items-baseline">
-		<div class="card col-5 mt-3 p-0">
-			<div class="card-header">
-				Últimas Atividades
-			</div>
-			<div class="card-body p-0 m-0">
-				<div class="p-4">
-					<a href="#" class="text-decoration-none">Post tal 1</a>
-					<small class="card-text"><em>17 de abril ás 21:59.</em></small> 
+<div class="container-fluid d-flex">
+	<div class="menu-aberto"></div>
+	<div class="container-quando-maberto p-4 col-10">
+		<h1 class="titulo-secao mx-4"><?=$this->view->nome?></h1>
+		<section class="col-12 d-flex justify-content-around align-items-baseline">
+			<div class="card col-5 mt-3 p-0">
+				<div class="card-header">
+					Últimas Atividades
 				</div>
-				<div class="card-comentarios-painel">
-  					<div class="px-4 py-2">
-						comentários
+				<div class="card-body p-0 m-0">
+					<div class="p-4">
+						<a href="#" class="text-decoration-none">Post tal 1</a>
+						<small class="card-text"><em>17 de abril ás 21:59.</em></small> 
 					</div>
-					<div class="card-header border-0 py-3 d-flex">
-						<i class="fas fa-user-circle fa-3x"></i><p class="card-text px-3">With supporting text below as a natural lead-in to additional content.</p>
+					<div class="card-comentarios-painel">
+						<div class="px-4 py-2">
+							comentários
+						</div>
+						<div class="card-header border-0 py-3 d-flex">
+							<i class="fas fa-user-circle fa-3x"></i><p class="card-text px-3">With supporting text below as a natural lead-in to additional content.</p>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 
-		<div class="card col-6 mt-3">
-			<div class="card-header">
-				Rascunho Rápido
+			<div class="card col-6 mt-3">
+				<div class="card-header">
+					Rascunho Rápido
+				</div>
+				<div class="card-body col-12">
+					<label for="titulo">Titulo:</label><br>
+					<input class="form-control" type="text" name="titulo" id="titulo" /><br>
+					<label for="descricao">Descrição:</label><br>
+					<textarea class="form-control" name="descricao" id="descricao"></textarea>
+					<button type="button" class="btn-painel text-white mt-3">Salvar como rascunho</button>
+				</div>
 			</div>
-			<div class="card-body col-12">
-				<label for="titulo">Titulo:</label><br>
-				<input class="form-control" type="text" name="titulo" id="titulo" /><br>
-				<label for="descricao">Descrição:</label><br>
-				<textarea class="form-control" name="descricao" id="descricao"></textarea>
-				<button type="button" class="btn-painel text-white mt-3">Salvar como rascunho</button>
-			</div>
-		</div>
-	</section>
+		</section>
+	</div>
 </div>

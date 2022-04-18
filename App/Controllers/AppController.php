@@ -41,5 +41,40 @@ class AppController extends Action {
 			header('Location: /central_adm?login=erro2');
 		} 
 	}
+
+	public function adm_set_midia() {
+
+		$posts = Container::getModel('Posts');
+
+		$extensao = strtolower(strrchr($_FILES['arquivo']['name'], '.'));
+		$novo_nome = md5(time()).$extensao;
+		$diretorio = "imagens/";
+
+		$posts->__set('arquivo', $novo_nome);
+		$posts->__set('descricao', $_POST['descricao']);
+		$posts->__set('tamanho', $_POST['tamanho']);
+
+		$posts->set_midia();
+	
+		move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio.$novo_nome);
+
+		$this->view->nome = 'Mídia';
+
+		header('Location: /adm_midia');
+	}
+
+	public function recupera_midia(){
+
+		$this->validaAutenticacao();
+	
+		$conexaoPosts = Container::getModel('Posts');
+		// resgatando mensagem
+		$conexaoPosts = $conexaoPosts->get_midia();
+		$this->view->midias = $conexaoPosts;
+
+		foreach($this->view->midias as $key=>$dados) {
+			echo $dados['descricao'].'@@@y@@@'.$dados['imagem'].'@@@y@@@'.$dados['tamanho'].'@@@fim@@@';
+		}
+	}
 }
 ?>
